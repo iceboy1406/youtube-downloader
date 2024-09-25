@@ -7,13 +7,11 @@ const downloadVideo = async ({
 }: DownloadVideoRequestBody) => {
     try {
         const response = await axios.post<{ status: 'string'; url: string }>(
-            'https://co.wuk.sh/api/json',
+            '/api/download/video',
             {
                 url,
-                vQuality: quality,
-                vCodec: codec,
-                aFormat: 'best',
-                filenamePattern: 'basic',
+                quality,
+                codec,
             },
             {
                 headers: {
@@ -32,12 +30,10 @@ const downloadVideo = async ({
 const downloadAudio = async ({ url, format }: DownloadAudioRequestBody) => {
     try {
         const response = await axios.post<{ status: 'string'; url: string }>(
-            'https://co.wuk.sh/api/json',
+            '/api/download/audio',
             {
                 url,
-                aFormat: format,
-                isAudioOnly: true,
-                filenamePattern: 'basic',
+                format,
             },
             {
                 headers: {

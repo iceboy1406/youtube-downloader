@@ -60,10 +60,11 @@ export async function GET(request: NextRequest, response: NextApiResponse) {
                     { status: 200 }
                 )
             } catch (error) {
+                console.log(error);
                 return Response.json(
                     {
                         status: 'Failed',
-                        message: 'Invalid URL',
+                        message: 'Something Went Wrong',
                     },
                     { status: 400 }
                 )
